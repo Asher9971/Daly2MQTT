@@ -163,19 +163,19 @@ private:
     {
       data.LEDBrightness = 127;
     }
-    if (strlen(data.staticIP) == 0 || strlen(data.httpUser) >= 16)
+    if (strlen(data.staticIP) == 0 || strlen(data.staticIP) >= 16)
     {
       strcpy(data.staticIP, "");
     }
-    if (strlen(data.staticGW) == 0 || strlen(data.httpUser) >= 16)
+    if (strlen(data.staticGW) == 0 || strlen(data.staticGW) >= 16)
     {
       strcpy(data.staticGW, "");
     }
-    if (strlen(data.staticSN) == 0 || strlen(data.httpUser) >= 16)
+    if (strlen(data.staticSN) == 0 || strlen(data.staticSN) >= 16)
     {
       strcpy(data.staticSN, "");
     }
-    if (strlen(data.staticDNS) == 0 || strlen(data.httpUser) >= 16)
+    if (strlen(data.staticDNS) == 0 || strlen(data.staticDNS) >= 16)
     {
       strcpy(data.staticDNS, "");
     }
