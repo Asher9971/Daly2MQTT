@@ -65,5 +65,13 @@ String htmlProcessor(const String &var)
         return (_settings.data.httpPass);
     if (var == F("pre_hadiscovery"))
         return (_settings.data.haDiscovery ? "checked" : "");
+    if (var == F("pre_static_ip"))
+        return (_settings.data.staticIP);
+    if (var == F("pre_static_gw"))
+        return (_settings.data.staticGW);
+    if (var == F("pre_static_sn"))
+        return (_settings.data.staticSN);
+    if (var == F("pre_static_dns"))
+        return (_settings.data.staticDNS);
     return String();
 }

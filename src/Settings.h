@@ -11,7 +11,7 @@ https://github.com/softwarecrash/DALY2MQTT
 class Settings
 {
   // change eeprom config version ONLY when new parameter is added and need reset the parameter
-  unsigned int configVersion = 11;
+  unsigned int configVersion = 12;
 
 public:
   struct Data
@@ -38,7 +38,11 @@ public:
     char httpUser[40];        // http basic auth username
     char httpPass[40];        // http basic auth password
     bool haDiscovery;         // HomeAssistant Discovery switch
-    byte LEDBrightness;         // brigthness of led
+    byte LEDBrightness;        // brigthness of led
+    char staticIP[16];        // static IP address
+    char staticGW[16];        // static gateway
+    char staticSN[16];        // static subnet mask
+    char staticDNS[16];       // static DNS
   } data;
 
   void load()
@@ -159,6 +163,22 @@ private:
     {
       data.LEDBrightness = 127;
     }
+    if (strlen(data.staticIP) == 0 || strlen(data.httpUser) >= 16)
+    {
+      strcpy(data.staticIP, "");
+    }
+    if (strlen(data.staticGW) == 0 || strlen(data.httpUser) >= 16)
+    {
+      strcpy(data.staticGW, "");
+    }
+    if (strlen(data.staticSN) == 0 || strlen(data.httpUser) >= 16)
+    {
+      strcpy(data.staticSN, "");
+    }
+    if (strlen(data.staticDNS) == 0 || strlen(data.httpUser) >= 16)
+    {
+      strcpy(data.staticDNS, "");
+    }
   }
   void coVersCheck()
   {
@@ -187,6 +207,10 @@ private:
       strcpy(data.httpPass, "");
       data.haDiscovery = false;
       data.LEDBrightness = 127;
+      strcpy(data.staticIP, "");
+      strcpy(data.staticGW, "");
+      strcpy(data.staticSN, "");
+      strcpy(data.staticDNS, "");
       save();
       load();
     }
