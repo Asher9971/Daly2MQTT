@@ -45,6 +45,18 @@
     <div class="col">Temperature: </div>
     <div class="col dF"><span id="packTemp"></span></div>
 </div>
+<div class="row gx-0 mb-2 bg-light rounded bg-opacity-50 px-2" id="cellTemp2Row" style="display: none;">
+    <div class="col">Cell Temperature 2: </div>
+    <div class="col dF"><span id="cellTemp2"></span></div>
+</div>
+<div class="row gx-0 mb-2 bg-light rounded bg-opacity-50 px-2" id="cellTemp3Row" style="display: none;">
+    <div class="col">Cell Temperature 3: </div>
+    <div class="col dF"><span id="cellTemp3"></span></div>
+</div>
+<div class="row gx-0 mb-2 bg-light rounded bg-opacity-50 px-2" id="cellTemp4Row" style="display: none;">
+    <div class="col">Cell Temperature 4: </div>
+    <div class="col dF"><span id="cellTemp4"></span></div>
+</div>
 
 <div class="row gx-0 mb-2 bg-light rounded bg-opacity-50 px-2">
     <div class="col">Cell Difference: </div>
@@ -151,6 +163,18 @@
 
         document.getElementById("cellH").innerHTML = data.Pack.High_CellNr + '↑' + data.Pack.High_CellV + 'V ';
         document.getElementById("cellL").innerHTML = data.Pack.Low_CellNr + '↓' + data.Pack.Low_CellV + 'V ';
+        if (data.Pack.Cell_Temp_2 !== undefined) {
+            document.getElementById("cellTemp2").innerHTML = data.Pack.Cell_Temp_2 + '°C ';
+            document.getElementById("cellTemp2Row").style.display = '';
+        }
+        if (data.Pack.Cell_Temp_3 !== undefined) {
+            document.getElementById("cellTemp3").innerHTML = data.Pack.Cell_Temp_3 + '°C ';
+            document.getElementById("cellTemp3Row").style.display = '';
+        }
+        if (data.Pack.Cell_Temp_4 !== undefined) {
+            document.getElementById("cellTemp4").innerHTML = data.Pack.Cell_Temp_4 + '°C ';
+            document.getElementById("cellTemp4Row").style.display = '';
+        }
 
         document.getElementById("packCycles").innerHTML = data.Pack.Cycles + ' ';
         document.getElementById("packTemp").innerHTML = data.Pack.BMS_Temp + '°C ';

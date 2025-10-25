@@ -749,6 +749,15 @@ void getJsonData()
   packJson[F("Cycles")] = bms.get.bmsCycles;
   packJson[F("BMS_Temp")] = bms.get.tempAverage;
   packJson[F("Cell_Temp")] = bms.get.cellTemperature[0];
+  if (bms.get.numOfTempSensors > 1) {
+    packJson[F("Cell_Temp_2")] = bms.get.cellTemperature[1];
+  }
+  if (bms.get.numOfTempSensors > 2) {
+    packJson[F("Cell_Temp_3")] = bms.get.cellTemperature[2];
+  }
+  if (bms.get.numOfTempSensors > 3) {
+    packJson[F("Cell_Temp_4")] = bms.get.cellTemperature[3];
+  }
   packJson[F("cell_hVt")] = bms.get.maxCellThreshold1 * 0.001;  // / 1000;
   packJson[F("cell_lVt")] = bms.get.minCellThreshold1 * 0.001;  // / 1000;
   packJson[F("cell_hVt2")] = bms.get.maxCellThreshold2 * 0.001; //
@@ -813,6 +822,15 @@ bool sendtoMQTT()
     mqttclient.publish(topicBuilder(buff, "Pack_Remaining_Ah"), dtostrf(bms.get.resCapacityAh, 3, 1, msgBuffer));
     mqttclient.publish(topicBuilder(buff, "Pack_Remaining_kWh"), dtostrf((bms.get.resCapacityAh * bms.get.packVoltage) / 1000, 3, 2, msgBuffer));
     mqttclient.publish(topicBuilder(buff, "Pack_Cycles"), itoa(bms.get.bmsCycles, msgBuffer, 10));
+    if (bms.get.numOfTempSensors > 1) {
+      mqttclient.publish(topicBuilder(buff, "Pack_Cell_Temperature_2"), itoa(bms.get.cellTemperature[1], msgBuffer, 10));
+    }
+    if (bms.get.numOfTempSensors > 2) {
+      mqttclient.publish(topicBuilder(buff, "Pack_Cell_Temperature_3"), itoa(bms.get.cellTemperature[2], msgBuffer, 10));
+    }
+    if (bms.get.numOfTempSensors > 3) {
+      mqttclient.publish(topicBuilder(buff, "Pack_Cell_Temperature_4"), itoa(bms.get.cellTemperature[3], msgBuffer, 10));
+    }
     mqttclient.publish(topicBuilder(buff, "Pack_BMS_Temperature"), itoa(bms.get.tempAverage, msgBuffer, 10));
     mqttclient.publish(topicBuilder(buff, "Pack_Cell_High"), itoa(bms.get.maxCellVNum, msgBuffer, 10));
     mqttclient.publish(topicBuilder(buff, "Pack_Cell_Low"), itoa(bms.get.minCellVNum, msgBuffer, 10));
