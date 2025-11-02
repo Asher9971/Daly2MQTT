@@ -1,3 +1,6 @@
+# Flash the D1 Mini .bin file on ESP8266!! Not the ESP01 File!
+# Multiple Temperature sensors now supported (up to 4)
+
 # Daly2MQTT [![GitHub release](https://img.shields.io/github/release/softwarecrash/Daly2MQTT?include_prereleases=&sort=semver&color=blue)](https://github.com/softwarecrash/Daly2MQTT/releases/latest) [![Discord](https://img.shields.io/discord/1007020337482973254?logo=discord&label=Discord)](https://discord.gg/fb2nZWDExz)
 Little Program for ESP82XX to get the Daly BMS data to web and MQTT 
 
